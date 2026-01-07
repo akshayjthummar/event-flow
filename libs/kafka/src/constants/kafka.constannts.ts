@@ -1,0 +1,31 @@
+export const KAFKA_BROKER = process.env.KAFKA_BROKER || 'localhost:9092';
+export const KAFKA_CLIENT_ID = 'eventflowapp-client';
+export const KAFKA_CONSUMER_GROUP = 'eventflowapp-consumer';
+
+// KAFKA TOPICS
+export const KAFKA_TOPICS = {
+  // Auth events
+  USER_REGISTERED: 'user.registered',
+  USER_LOGIN: 'user.login',
+  PASSWORD_RESERT_REQUESTED: 'password.reset.requested',
+  //   Event events
+  EVENT_CREATED: 'event.created',
+  EVENT_UPDATED: 'event.updated',
+  EVENT_CANCELLED: 'event.cancelled',
+
+  // Ticket events
+  TICKET_PURCHASED: 'ticket.purchased',
+  TICKET_CHECKED_IN: 'ticket.checkedin',
+  TICKET_CANCELLED: 'ticket.cancelled',
+
+  //   Payment events
+  PAYMENT_COMPLETED: 'payment.completed',
+  PAYMENT_FAILED: 'payment.failed',
+  PAYMENT_REFUNDED: 'payment.refunded',
+
+  //   Notification triggers
+  SEND_EMAIL: 'notification.send-email',
+  SEND_PUSH: 'notification.send-push',
+} as const;
+
+export type KafkaTopic = (typeof KAFKA_TOPICS)[keyof typeof KAFKA_TOPICS];
