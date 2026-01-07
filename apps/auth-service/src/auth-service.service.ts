@@ -1,4 +1,4 @@
-import { KAFKA_SERVICE } from '@app/kafka';
+import { KAFKA_SERVICE, KAFKA_TOPICS } from '@app/kafka';
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
 import { ClientKafka } from '@nestjs/microservices';
 
@@ -14,5 +14,13 @@ export class AuthServiceService implements OnModuleInit {
   }
   getHello(): string {
     return 'Hello Word!';
+  }
+  simulateUserRegistration(email: string) {
+    // Publish events to Kafka
+    this.kafkaClient.emit(KAFKA_TOPICS.USER_REGISTERED, {
+      email,
+      timestamp: new Date().toISOString(),
+    });
+    return { message: `User registered:  ${email}` };
   }
 }

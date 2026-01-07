@@ -1,6 +1,6 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { KAFKA_CLIENT_ID } from './constants/kafka.constannts';
+import { KAFKA_BROKER, KAFKA_CLIENT_ID } from './constants/kafka.constants';
 
 export const KAFKA_SERVICE = 'KAFKA_SERVICE';
 
@@ -17,7 +17,7 @@ export class KafkaModule {
             options: {
               client: {
                 clientId: KAFKA_CLIENT_ID,
-                brokers: [process.env.KAFKA_BROKER as string],
+                brokers: [KAFKA_BROKER as string],
               },
               consumer: {
                 groupId: consumerGroup ?? KAFKA_CLIENT_ID,

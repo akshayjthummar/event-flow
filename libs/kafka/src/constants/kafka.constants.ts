@@ -1,13 +1,13 @@
 export const KAFKA_BROKER = process.env.KAFKA_BROKER || 'localhost:9092';
-export const KAFKA_CLIENT_ID = 'eventflowapp-client';
-export const KAFKA_CONSUMER_GROUP = 'eventflowapp-consumer';
+export const KAFKA_CLIENT_ID = 'eventflow-auth-service';
+export const KAFKA_CONSUMER_GROUP = 'auth-service-group';
 
 // KAFKA TOPICS
 export const KAFKA_TOPICS = {
   // Auth events
   USER_REGISTERED: 'user.registered',
   USER_LOGIN: 'user.login',
-  PASSWORD_RESERT_REQUESTED: 'password.reset.requested',
+  PASSWORD_RESET_REQUESTED: 'password.reset.requested',
   //   Event events
   EVENT_CREATED: 'event.created',
   EVENT_UPDATED: 'event.updated',
