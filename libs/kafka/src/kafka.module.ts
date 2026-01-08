@@ -17,7 +17,7 @@ export class KafkaModule {
             options: {
               client: {
                 clientId: KAFKA_CLIENT_ID,
-                brokers: [KAFKA_BROKER as string],
+                brokers: [KAFKA_BROKER],
               },
               consumer: {
                 groupId: consumerGroup ?? KAFKA_CLIENT_ID,
